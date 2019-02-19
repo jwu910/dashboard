@@ -18,11 +18,11 @@ import darkTheme from '../styles/dark-theme'
 
 export default () => (
 	<Dashboard theme={darkTheme}>
-		<DateTime />
+		{/* <DateTime />
 
-		<PageSpeedInsightsScore url="https://liferay.com" />
+		 <PageSpeedInsightsScore url="https://liferay.com" />
 
-		<PageSpeedInsightsStats url="https://liferay.com" />
+		<PageSpeedInsightsStats url="https://liferay.com" /> */}
 
 		<JiraIssueCount
 			title="JIRA Open Bugs"
@@ -30,7 +30,7 @@ export default () => (
 			query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
 		/>
 
-		<GitHubIssueCount owner="node-gh" repository="gh" />
+		{/* <GitHubIssueCount owner="node-gh" repository="gh" /> */}
 
 		{/* <SonarQube
 			url="https://crossorigin.me/https://sonarcloud.io"

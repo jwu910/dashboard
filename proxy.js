@@ -8,6 +8,15 @@ const credential = Base64.encode(
 	`${process.env.JIRA_USER}:${process.env.JIRA_PASS}`
 )
 
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept'
+	)
+	next()
+})
+
 app.get('/api/jira', (req, res) => {
 	try {
 		axios
