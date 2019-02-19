@@ -8,6 +8,7 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 import GitHubIssueCount from '../components/widgets/github/issue-count'
 import GitHubPullRequests from '../components/widgets/github/pull-requests'
 import GitHubPRInfo from '../components/widgets/github/pull-request-info'
+import GitHubEmojiCount from '../components/widgets/github/emoji-count'
 // import SonarQube from '../components/widgets/sonarqube'
 // import JenkinsJobStatus from '../components/widgets/jenkins/job-status'
 // import JenkinsJobHealth from '../components/widgets/jenkins/job-health'
@@ -30,10 +31,15 @@ export default () => (
 			url="https://crossorigin.me/https://jira.atlassian.com"
 			query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
 		/>
+
 		<GitHubIssueCount owner="node-gh" repository="gh" />
-		*/}
+
 		<GitHubPRInfo />
+
 		<GitHubPullRequests owner="protoEvangelion" repository="gh" />
+
+		<GitHubEmojiCount owner="node-gh" repository="gh" />
+
 		{/* <SonarQube
 			url="https://crossorigin.me/https://sonarcloud.io"
 			componentKey="com.icegreen:greenmail-parent"
