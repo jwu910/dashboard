@@ -35,6 +35,7 @@ export default ({ children, theme, title = 'Dashboard' }) => (
 					href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
 					rel="stylesheet"
 				/>
+				<script src="https://www.gstatic.com/charts/loader.js" />
 			</Head>
 
 			{children}

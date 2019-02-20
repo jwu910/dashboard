@@ -1,12 +1,9 @@
 import Dashboard from '../components/dashboard'
 
 // Widgets
-import DateTime from '../components/widgets/datetime'
 import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/score'
 import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/stats'
-import JiraIssueCount from '../components/widgets/jira/issue-count'
 import GitHubIssueCount from '../components/widgets/github/issue-count'
-import GitHubPullRequests from '../components/widgets/github/pull-requests'
 import GitHubPRInfo from '../components/widgets/github/pull-request-info'
 import GitHubEmojiCount from '../components/widgets/github/emoji-count'
 // import SonarQube from '../components/widgets/sonarqube'
@@ -19,14 +16,26 @@ import GitHubEmojiCount from '../components/widgets/github/emoji-count'
 // import lightTheme from '../styles/light-theme'
 import darkTheme from '../styles/dark-theme'
 import 'react-accessible-accordion/dist/fancy-example.css'
-
+import ReactChartkick, { GeoChart, Timeline } from 'react-chartkick'
+import Chart from 'chart.js'
 import styled from 'styled-components'
+
+ReactChartkick.addAdapter(Chart)
 
 const Half = styled.div`
 	width: 50%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+`
+
+const ChartWrapper = styled.section`
+	margin: 3rem 0;
+	width: 97%;
+
+	svg {
+		background: white;
+	}
 `
 
 export default () => (
@@ -44,6 +53,33 @@ export default () => (
 		<Half>
 			<GitHubPRInfo />
 		</Half>
+
+		<ChartWrapper>
+			<h3>Live Site Usage</h3>
+
+			<GeoChart
+				adapter="google"
+				data={[['United States', 44], ['Germany', 23], ['Brazil', 22]]}
+			/>
+		</ChartWrapper>
+
+		<ChartWrapper>
+			<h3>Sprint PR Time-To-Merge</h3>
+
+			<Timeline
+				data={[
+					['Nav Bug Fix', '2018-01-29', '2018-02-10'],
+					['Footer icons change', '2018-02-3', '2018-02-15'],
+					['Perf improvement', '2018-01-18', '2018-03-3'],
+					[
+						'Marketing events landing page',
+						'2018-02-15',
+						'2018-03-2',
+					],
+					['Additional lang keys', '2018-02-3', '2018-02-4'],
+				]}
+			/>
+		</ChartWrapper>
 
 		{/* <SonarQube
 			url="https://crossorigin.me/https://sonarcloud.io"

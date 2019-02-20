@@ -4,36 +4,37 @@ import LoadingIndicator from './loading-indicator'
 import ErrorIcon from './error-icon'
 
 const Container = styled.div`
-  ${size('20em')}
-  align-items: center;
-  background-color: ${props => props.theme.palette.canvasColor};
-  border: 1px solid ${props => props.theme.palette.borderColor};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 1em;
-  padding: 1em;
+	${size('19em')}
+	align-items: center;
+	background-color: ${props => props.theme.palette.canvasColor};
+	border: 1px solid ${props => props.theme.palette.borderColor};
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1em;
+	padding: 1em;
 `
 
 const Title = styled.h1`
-  text-align: center;
+	text-align: center;
 `
 
 export default ({ children, error = false, loading = false, title = '' }) => {
-  let content
+	let content
 
-  if (loading) {
-    content = <LoadingIndicator />
-  } else if (error) {
-    content = <ErrorIcon />
-  } else {
-    content = <div>{children}</div>
-  }
+	if (loading) {
+		content = <LoadingIndicator />
+	} else if (error) {
+		content = <ErrorIcon />
+	} else {
+		content = <div>{children}</div>
+	}
 
-  return (
-    <Container>
-      {title ? <Title>{title}</Title> : ''}
-      {content}
-    </Container>
-  )
+	return (
+		<Container>
+			{title ? <Title>{title}</Title> : ''}
+			{content}
+		</Container>
+	)
 }

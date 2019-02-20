@@ -3,6 +3,7 @@ import client from './client'
 import { object, string, number } from 'yup'
 import Widget from '../../widget'
 import { basicAuthHeader } from '../../../lib/auth'
+import styled from 'styled-components'
 
 const schema = object().shape({
 	owner: string().required(),
@@ -11,6 +12,19 @@ const schema = object().shape({
 	title: string(),
 	authKey: string(),
 })
+
+const Flex = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+
+	> div {
+		margin: 1rem 0.5rem;
+		display: flex;
+		justify-content: center;
+	}
+`
 
 const EMOJI_URL = 'https://github.githubassets.com/images/icons/emoji'
 
@@ -127,17 +141,25 @@ export default class GitHubEmojiCount extends Component {
 
 		return (
 			<Widget title={title} loading={loading} error={error}>
-				{prBody &&
-					prBody.map((body, index) => (
-						<div key={index}>
-							<img src={body.name} width="24px" height="24px" /> :{' '}
-							{body.count}
-						</div>
-					))}
+				<Flex>
+					{prBody &&
+						prBody.map((body, index) => (
+							<div key={index}>
+								<img
+									src={body.name}
+									width="24px"
+									height="24px"
+								/>
+								&nbsp; : {body.count}
+							</div>
+						))}
 
-				{!prBody.length && (
-					<div>No emoji was used in the last 10 pull requests 😢</div>
-				)}
+					{!prBody.length && (
+						<div>
+							No emoji was used in the last 10 pull requests 😢
+						</div>
+					)}
+				</Flex>
 			</Widget>
 		)
 	}
