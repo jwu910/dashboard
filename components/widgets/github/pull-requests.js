@@ -10,6 +10,14 @@ import List from '../../list'
 import Link from '../../link'
 import { basicAuthHeader } from '../../../lib/auth'
 import client from './client'
+import styled from 'styled-components'
+
+const TitleText = styled.h5`
+	font-size: 1em;
+	margin-top: 4px;
+	margin-bottom: 8px;
+	text-align: center;
+`
 
 const schema = object().shape({
 	owner: string().required(),
@@ -114,10 +122,11 @@ export default class GitHubPullRequests extends Component {
 
 	render() {
 		const { error, loading, pullRequests } = this.state
-		const { title } = this.props
+		const { owner, repository, title } = this.props
 
 		return (
 			<Widget title={title} loading={loading} error={error}>
+				<TitleText>{`Project: ${owner}/${repository}`}</TitleText>
 				{pullRequests && (
 					<List>
 						{pullRequests.map(
