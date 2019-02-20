@@ -21,26 +21,40 @@ const Container = styled.main`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	margin-top: 10rem;
+	margin-top: 7rem;
 	min-height: 100vh;
+	font-family: 'Roboto', sans-serif;
+`
+
+const Nav = styled.nav`
+	color: white;
+	background: #282828;
+	height: 3rem;
+	width: 100%;
+	padding: 2.3rem;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 55px;
 `
 
 export default ({ children, theme, title = 'Dashboard' }) => (
 	<ThemeProvider theme={theme}>
-		<Container>
+		<>
 			<Head>
 				<title>{title}</title>
 				<link rel="icon" href="/static/favicon.png" />
 				<link
-					href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+					href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto:300,400,500"
 					rel="stylesheet"
 				/>
+
 				<script src="https://www.gstatic.com/charts/loader.js" />
 			</Head>
 
-			{children}
+			<Nav>Dev Team Dashboard</Nav>
+
+			<Container>{children}</Container>
 
 			<GlobalStyle />
-		</Container>
+		</>
 	</ThemeProvider>
 )
