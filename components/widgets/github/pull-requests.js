@@ -29,7 +29,7 @@ const schema = object().shape({
 export default class GitHubPullRequests extends Component {
 	static defaultProps = {
 		interval: 1000 * 60 * 5,
-		title: 'GitHub Pull Requests',
+		title: 'Outstanding PRs',
 	}
 
 	state = {
@@ -66,6 +66,7 @@ export default class GitHubPullRequests extends Component {
             repository(name: "${repository}") {
               name
               pullRequests(first: 10, states: OPEN, orderBy: {direction: ASC, field: UPDATED_AT}) {
+								totalCount
                 edges {
                   node {
                     id
@@ -108,6 +109,7 @@ export default class GitHubPullRequests extends Component {
 				pullRequests: pullRequests.edges,
 				error: false,
 				loading: false,
+				totalCount: pullRequests.totalCount,
 			})
 		} catch (error) {
 			console.log(error)
@@ -121,12 +123,12 @@ export default class GitHubPullRequests extends Component {
 	}
 
 	render() {
-		const { error, loading, pullRequests } = this.state
+		const { error, loading, pullRequests, totalCount } = this.state
 		const { owner, repository, title } = this.props
 
 		return (
 			<Widget title={title} loading={loading} error={error}>
-				<TitleText>{`Project: ${owner}/${repository}`}</TitleText>
+				<TitleText>{`Project: ${owner}/${repository} | Total: ${totalCount}`}</TitleText>
 				{pullRequests && (
 					<List>
 						{pullRequests.map(
