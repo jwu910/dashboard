@@ -33,7 +33,7 @@ export default () => (
 
 		<GitHubIssueCount owner="node-gh" repository="gh" />
 
-		<GitHubPullRequests owner="jwu910" repository="check-it-out" />
+		<GitHubPullRequests owner="protoEvangelion" repository="gh" />
 
 		{/* <SonarQube
 			url="https://crossorigin.me/https://sonarcloud.io"

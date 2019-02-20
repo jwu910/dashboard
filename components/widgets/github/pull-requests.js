@@ -67,7 +67,6 @@ export default class GitHubPullRequests extends Component {
                     number
                     title
                     state
-                    baseRefName
                     author {
                       login
                     }
@@ -79,7 +78,9 @@ export default class GitHubPullRequests extends Component {
         }
       `)
 
-			const refs = await res.user.repository.pullRequests.edges.map(pr =>
+			const { pullRequests } = await res.user.repository
+
+			const refs = pullRequests.edges.map(pr =>
 				fetch(
 					`https://api.github.com/repos/${owner}/${repository}/commits/${
 						pr.node.headRefOid
@@ -96,7 +97,7 @@ export default class GitHubPullRequests extends Component {
 			const checks = await Promise.all([...refs])
 
 			this.setState({
-				pullRequests: res.user.repository.pullRequests.edges,
+				pullRequests: pullRequests.edges,
 				error: false,
 				loading: false,
 			})
