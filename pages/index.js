@@ -6,6 +6,7 @@ import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/sco
 import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/stats'
 import JiraIssueCount from '../components/widgets/jira/issue-count'
 import GitHubIssueCount from '../components/widgets/github/issue-count'
+import GitHubPullRequests from '../components/widgets/github/pull-requests'
 // import SonarQube from '../components/widgets/sonarqube'
 // import JenkinsJobStatus from '../components/widgets/jenkins/job-status'
 // import JenkinsJobHealth from '../components/widgets/jenkins/job-health'
@@ -30,7 +31,9 @@ export default () => (
 			query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
 		/>
 
-		{/* <GitHubIssueCount owner="node-gh" repository="gh" /> */}
+		<GitHubIssueCount owner="node-gh" repository="gh" />
+
+		<GitHubPullRequests owner="jwu910" repository="check-it-out" />
 
 		{/* <SonarQube
 			url="https://crossorigin.me/https://sonarcloud.io"
