@@ -18,28 +18,32 @@ import GitHubEmojiCount from '../components/widgets/github/emoji-count'
 // Theme
 // import lightTheme from '../styles/light-theme'
 import darkTheme from '../styles/dark-theme'
+import 'react-accessible-accordion/dist/fancy-example.css'
+
+import styled from 'styled-components'
+
+const Half = styled.div`
+	width: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+`
 
 export default () => (
 	<Dashboard theme={darkTheme}>
-		{/* <DateTime />
+		<Half>
+			<PageSpeedInsightsScore url="https://google.com" />
 
-		 <PageSpeedInsightsScore url="https://liferay.com" />
+			<PageSpeedInsightsStats url="https://google.com" />
 
-		<PageSpeedInsightsStats url="https://liferay.com" /> */}
+			<GitHubEmojiCount owner="johnnyduong" repository="dashboard" />
 
-		{/* <JiraIssueCount
-			title="JIRA Open Bugs"
-			url="https://crossorigin.me/https://jira.atlassian.com"
-			query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
-		/> */}
+			<GitHubIssueCount owner="node-gh" repository="gh" />
+		</Half>
 
-		<GitHubIssueCount owner="node-gh" repository="gh" />
-
-		<GitHubPRInfo />
-
-		<GitHubPullRequests owner="protoEvangelion" repository="gh" />
-
-		<GitHubEmojiCount owner="johnnyduong" repository="dashboard" />
+		<Half>
+			<GitHubPRInfo />
+		</Half>
 
 		{/* <SonarQube
 			url="https://crossorigin.me/https://sonarcloud.io"

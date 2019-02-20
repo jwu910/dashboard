@@ -8,34 +8,38 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Roboto', sans-serif;
   }
+
+  body {
+    background: #303030;
+  }
 `
 
 const Container = styled.main`
-  align-content: center;
-  align-items: center;
-  background-color: ${props => props.theme.palette.backgroundColor};
-  color: ${props => props.theme.palette.textColor};
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  min-height: 100vh;
+	align-items: flex-start;
+	background-color: ${props => props.theme.palette.backgroundColor};
+	color: ${props => props.theme.palette.textColor};
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-top: 10rem;
+	min-height: 100vh;
 `
 
 export default ({ children, theme, title = 'Dashboard' }) => (
-  <ThemeProvider theme={theme}>
-    <Container>
-      <Head>
-        <title>{title}</title>
-        <link rel='icon' href='/static/favicon.png' />
-        <link
-          href='https://fonts.googleapis.com/css?family=Roboto:300,400,500'
-          rel='stylesheet'
-        />
-      </Head>
+	<ThemeProvider theme={theme}>
+		<Container>
+			<Head>
+				<title>{title}</title>
+				<link rel="icon" href="/static/favicon.png" />
+				<link
+					href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+					rel="stylesheet"
+				/>
+			</Head>
 
-      {children}
+			{children}
 
-      <GlobalStyle />
-    </Container>
-  </ThemeProvider>
+			<GlobalStyle />
+		</Container>
+	</ThemeProvider>
 )
