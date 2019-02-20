@@ -48,6 +48,8 @@ export default () => (
 			<GitHubEmojiCount owner="johnnyduong" repository="dashboard" />
 
 			<GitHubIssueCount owner="node-gh" repository="gh" />
+
+			<GitHubPullRequests owner="node-gh" repository="gh" />
 		</Half>
 
 		<Half>
